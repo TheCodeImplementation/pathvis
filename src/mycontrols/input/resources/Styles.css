@@ -1,0 +1,32 @@
+/*
+ * Created by The Code Implementation, Mar 2020.
+ * Youtube channel: https://www.youtube.com/channel/UCecfXH0CwYv-CA0Oo3-8PFg
+ * Github: https://github.com/TheCodeImplementation
+ */
+
+.doubleScroller{
+    -fx-text-fill: -fx-text-inner-color; /*text color*/
+    -fx-background-color:
+            linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border),
+            linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+    -fx-background-insets: 0, 1; /*0 0 -5 0, 1 1 -4 1*/
+    -fx-background-radius: 3, 2;
+    -fx-padding: 0.333333em 0.583em 7 0.583em; /* space around text area */
+}
+
+.doubleScroller:focused {
+    -fx-highlight-fill: -fx-accent; /*the box around highlighted text*/
+    -fx-highlight-text-fill: white;  /*highlighted text*/
+    -fx-background-color:
+        -fx-focus-color,
+        -fx-control-inner-background,
+        -fx-faint-focus-color,
+        linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background); /*the various colours that make the background*/
+    -fx-background-insets: -0.2, 1, -1.4, 3; /*the perimeter of each colour from the perimeter of the box (min=out, pos=in*/
+    /*-0.2 -0.2 -5.2 -0.2, 1 1 -4 1, -1.4 -1.4 -6.4 -1.4, 3 3 -2 3*/
+    -fx-background-radius: 3 0 0 3, 2 0 0 2, 4 0 0 4,0; /*sharpness of corners (less=sharper*/
+}
+
+.doubleScrollerTickMarks {
+    -fx-border-color: derive(-fx-text-box-border, -5%);
+}

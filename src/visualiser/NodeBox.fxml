@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Created by The Code Implementation, Mar 2020.
+ * Youtube channel: https://www.youtube.com/channel/UCecfXH0CwYv-CA0Oo3-8PFg
+ * Github: https://github.com/TheCodeImplementation
+-->
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<?import mycontrols.input.DoubleScroller?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<fx:root type="javafx.scene.layout.VBox"
+         xmlns:fx="http://javafx.com/fxml">
+    <padding>
+        <Insets topRightBottomLeft="10"/>
+    </padding>
+    <Label text="Vertex Modifier">
+        <padding>
+            <Insets topRightBottomLeft="5"/>
+        </padding>
+    </Label>
+    <HBox alignment="CENTER" spacing="5">
+        <padding>
+            <Insets topRightBottomLeft="5"/>
+        </padding>
+        <Label text="ID:"/>
+        <HBox fx:id="visNodeContainer"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="x"/>
+        <DoubleScroller fx:id="doubleScrollerX" minValue="0" maxValue="Infinity" amountToStepBy="1" />
+        <Label text="y"/>
+        <DoubleScroller fx:id="doubleScrollerY" minValue="0" maxValue="Infinity" amountToStepBy="1"/>
+    </HBox>
+    <HBox alignment="CENTER">
+        <Button fx:id="cmdStart"       text="_Start"       styleClass="start"       style="-fx-background-radius: 50 0 0 50;"/>
+        <Button fx:id="cmdDestination" text="_Destination" styleClass="destination" style="-fx-background-radius: 0 50 50 0;"/>
+    </HBox>
+    <Label text="Edges">
+        <padding>
+            <Insets topRightBottomLeft="5"/>
+        </padding>
+    </Label>
+    <VBox fx:id="vbEdges">
+        <VBox.margin>
+            <Insets bottom="10"/>
+        </VBox.margin>
+    </VBox>
+</fx:root>

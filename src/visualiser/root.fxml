@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Created by The Code Implementation, Mar 2020.
+ * Youtube channel: https://www.youtube.com/channel/UCecfXH0CwYv-CA0Oo3-8PFg
+ * Github: https://github.com/TheCodeImplementation
+-->
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.geometry.Insets?>
+<?import visualiser.VisNode?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.GridPane?>
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="visualiser.Controller"
+        stylesheets="@MyStyles.css">
+    <padding>
+        <Insets top="10" right="25" bottom="25" left="25"/>
+    </padding>
+    <left>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <Tab text="Algorithm">
+                <VBox fx:id="vbLeft">
+                    <Label text="Frontier" contentDisplay="RIGHT">
+                        <graphic>
+                            <VisNode text="0" styleClass="frontier"/>
+                        </graphic>
+                    </Label>
+                    <ListView fx:id="listA"
+                              minHeight="105"
+                              maxHeight="125"
+                    />
+                    <Label text="Visited" contentDisplay="RIGHT">
+                        <graphic>
+                            <VisNode text="0" styleClass="visited"/>
+                        </graphic>
+                    </Label>
+                    <ListView fx:id="listB"
+                              minHeight="105"
+                              maxHeight="125"
+                    />
+                    <Label text="Pseudocode"/>
+                    <ListView fx:id="listC"
+                              minHeight="364"
+                              maxHeight="365"
+                              fixedCellSize="24"
+                    />
+                </VBox>
+            </Tab>
+            <Tab text="Network">
+                <VBox>
+                    <HBox alignment="CENTER" spacing="10">
+                        <MenuButton text="Quick Networks">
+                            <items>
+                                <MenuItem text="_Manhattan" onAction="#buildManhattan">
+                                    <graphic>
+                                        <Region prefWidth="150" prefHeight="100" style="-fx-border-color:black;">
+                                            <shape>
+                                                <SVGPath content="M 40 80 L 160 80 L 160 120 L 40 120 L 40 160 L 160 160 L 160 200 L 120 200 L 120 80 L 80 80 L 80 200 L 40 200 L 40 80 L 160 80 L 160 200 L 40 200 L 80 200 L 80 160 L 80 120 L 120 120 L 120 160 L 80 160 L 40 160 "/>
+                                            </shape>
+                                        </Region>
+                                    </graphic>
+                                </MenuItem>
+                                <MenuItem text="_Tree" onAction="#buildTree">
+                                    <graphic>
+                                        <Region prefWidth="150" prefHeight="50" style="-fx-border-color:black;">
+                                            <shape>
+                                                <SVGPath content="M 0 100 L 50 50 L 50 50 L 100 100 L 50 50 L 125 0 L 200 50 L 150 100 L 200 50 L 250 100 "/>
+                                            </shape>
+                                        </Region>
+                                    </graphic>
+                                </MenuItem>
+                            </items>
+                        </MenuButton>
+                        <Button fx:id="btnClear"
+                                text="_Clear"
+                                onAction="#clickClear"/>
+                        <Button fx:id="btnExport"
+                                text="Export"
+                                onAction="#exportNetwork"/>
+                        <padding>
+                            <Insets topRightBottomLeft="10"/>
+                        </padding>
+                    </HBox>
+                    <ScrollPane style="-fx-background-color:transparent;" fx:id="spNetwork" hbarPolicy="NEVER" vbarPolicy="NEVER">
+                        <Accordion fx:id="acrNetwork"/>
+                    </ScrollPane>
+                </VBox>
+            </Tab>
+            <Tab text="Information">
+                <ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER">
+                    <Accordion>
+                        <panes>
+                            <TitledPane text="Controls">
+                                <GridPane>
+                                    <Label text="Control"
+                                           GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>               <Label text="Action"
+                                                                                        GridPane.columnIndex="1"
+                                                                                        GridPane.rowIndex="0"/>
+                                    <TextField text="Left click"
+                                               GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"
+                                               editable="false"/>        <TextField text="Add single node"
+                                                                                    GridPane.columnIndex="1"
+                                                                                    GridPane.rowIndex="1"
+                                                                                    editable="false"/>
+                                    <TextField text="Left drag"
+                                               GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"
+                                               editable="false"/>         <TextField text="Add connected node(s)"
+                                                                                     GridPane.columnIndex="1"
+                                                                                     GridPane.rowIndex="2"
+                                                                                     editable="false"/>
+                                    <TextField text="Left click on node"
+                                               GridPane.columnIndex="0"
+                                               GridPane.rowIndex="3"
+                                               editable="false"/>        <TextField text="Show node details"
+                                                                                    GridPane.columnIndex="1"
+                                                                                    GridPane.rowIndex="3"
+                                                                                    editable="false"/>
+                                    <TextField text="Right click"
+                                               GridPane.columnIndex="0"
+                                               GridPane.rowIndex="4"
+                                               editable="false"/>        <TextField text="Delete node"
+                                                                                    GridPane.columnIndex="1"
+                                                                                    GridPane.rowIndex="4"
+                                                                                    editable="false"/>
+                                    <TextField text="Right drag"
+                                               GridPane.columnIndex="0"
+                                               GridPane.rowIndex="5"
+                                               editable="false"/>        <TextField text="Move node"
+                                                                                    GridPane.columnIndex="1"
+                                                                                    GridPane.rowIndex="5"
+                                                                                    editable="false"/>
+                                </GridPane>
+                            </TitledPane>
+                            <TitledPane text="Weights">
+                                <TextArea maxWidth="350" maxHeight="100" wrapText="true" editable="false">
+                                    Add a weight to an edge by clicking on either of joining vertices and opening the node-editor. Enter the weight into the text field under the "Edges" label.
+                                </TextArea>
+                            </TitledPane>
+                            <TitledPane text="Directional Edges">
+                                <TextArea maxWidth="350" maxHeight="100" wrapText="true" editable="false">
+                                    Make an edge directional by clicking on either of joining vertices and opening the node editor. Click the arrow button under the "Edges" label. The arrowhead will then disappear.
+                                </TextArea>
+                            </TitledPane>
+                            <TitledPane text="Running the Network">
+                                <TextArea maxWidth="350" maxHeight="100" wrapText="true" editable="false">
+                                    The play button will only be enabled when the user has selected both a starting and destination node using the node-editor.
+                                </TextArea>
+                            </TitledPane>
+                            <TitledPane text="Defining your own algorithms">
+                                <TextArea fx:id="txtUserAlgo" prefWidth="360" prefHeight="400" wrapText="true" editable="false"/>
+                            </TitledPane>
+                            <TitledPane text="Export/Import Network">
+                                <TextArea maxWidth="350" maxHeight="100" wrapText="true" editable="false">
+                                    To export a network, simply click "Network > Export" and then choose a location to save to. To import a saved network, drag the exported file over the network area.
+                                </TextArea>
+                            </TitledPane>
+                            <TitledPane text="More Info">
+                                <AnchorPane fx:id="spMoreInfo">
+                                    <TextArea id="more_info" maxWidth="350" prefHeight="200" wrapText="true" editable="false" layoutX="15">
+                                        Created by The Code Implementation (Youtube Channel). Video tutorials can be found at https://tinyurl.com/vnafc2h. The project's intention is to help people learn how to write path finding algorithms in a fun and interactive way.
+                                    </TextArea>
+                                </AnchorPane>
+                            </TitledPane>
+                        </panes>
+                    </Accordion>
+                </ScrollPane>
+            </Tab>
+            <padding>
+                <Insets right="25"/>
+            </padding>
+        </TabPane>
+    </left>
+    <center>
+        <VBox>
+            <HBox alignment="BOTTOM_LEFT" spacing="10">
+                <ChoiceBox fx:id="cbxAlgorithms"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox>
+                    <ToggleButton fx:id="chbShowWeight"     text="_Weights"     style="-fx-background-radius: 20% 0% 0% 20%/40% 0% 0% 40%;"/>
+                    <ToggleButton fx:id="chbShowDistance"   text="Distanc_e"    style="-fx-background-radius: 0% 20% 20% 0%/0% 40% 40% 0%;"/>
+                </HBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox>
+                    <Button fx:id="btnReset"
+                            onAction="#resetNetwork"
+                            disable="true"
+                            style="-fx-background-radius: 0%;">
+                        <tooltip>
+                            <Tooltip text="Stop (I)"/>
+                        </tooltip>
+                        <graphic>
+                            <Region prefWidth="15" prefHeight="15" style="-fx-border-color:black;">
+                                <shape>
+                                    <SVGPath content="M 50 50 L 50 100 L 100 100 L 100 50 z"/>
+                                </shape>
+                            </Region>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="btnStep"
+                            onAction="#clickPlay" style="-fx-background-radius: 0%;">
+                        <tooltip>
+                            <Tooltip text="Step (O)"/>
+                        </tooltip>
+                        <graphic>
+                            <Region prefWidth="15" prefHeight="15" style="-fx-border-color:black;">
+                                <shape>
+                                    <SVGPath content="M 50 50 L 50 150 L 100 100 L 50 50 L 100 50 L 100 150 L 130 150 L 130 50 L 100 50 "/>
+                                </shape>
+                            </Region>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="btnPlay"
+                            onAction="#clickPlay" style="-fx-background-radius: 0% 20% 20% 0%/0% 40% 40% 0%;">
+                        <tooltip>
+                            <Tooltip text="Play (P)"/>
+                        </tooltip>
+                        <graphic>
+                            <Region prefWidth="15" prefHeight="15" style="-fx-border-color:black;">
+                                <shape>
+                                    <SVGPath content="M 50 50 L 50 150 L 100 100 L 50 50 z"/>
+                                </shape>
+                            </Region>
+                        </graphic>
+                    </Button>
+                </HBox>
+                <padding>
+                    <Insets bottom="10"/>
+                </padding>
+            </HBox>
+            <ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER">
+                <AnchorPane fx:id="graphSpace"
+                    onMousePressed="#graphSpaceMousePressed"
+                    onDragDetected="#graphSpaceDragDetected"
+                    onMouseDragged="#graphSpaceMouseDragged"
+                    onMouseReleased="#graphSpaceMouseReleased"
+                    onDragOver="#graphSpaceDragOver"
+                    onDragDropped="#graphSpaceDragDropped"
+                    minWidth="1000"
+                    prefHeight="720"
+                    style="-fx-padding:100;"
+                    styleClass="graphSpace"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

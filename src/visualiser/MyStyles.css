@@ -1,0 +1,152 @@
+/*
+ * Created by The Code Implementation, Mar 2020.
+ * Youtube channel: https://www.youtube.com/channel/UCecfXH0CwYv-CA0Oo3-8PFg
+ * Github: https://github.com/TheCodeImplementation
+ */
+
+* {
+    -myDarkest: #2c2c2c;
+    -myLightest: #e6e6e6;
+    -myMid: #3c3c3c;
+
+    -myOrange: #FF8400;
+    -myPurple: #8278E6;
+    -myBlue: #608BF7;
+    -myPink: #E6548D;
+    -myGreen: #00B93F;
+    -myDarkBlue: #006CE9;
+    -myYellow: #FFD139;
+    -myRed: #FF0101;
+
+}
+
+/********************************************************************************/
+/***********************************GRAPH SPACE*********************************/
+/********************************************************************************/
+
+.graphSpace {
+    -fx-background-color:  lightblue;
+    -fx-border-color: transparent;
+}
+
+/********************************************************************************/
+/***********************************ARROW**************************************/
+/********************************************************************************/
+
+.arrow{
+    /*lines*/
+    -fx-stroke: -myMid;
+    -fx-opacity: 1;
+}
+.arrowHeadHover, .weight.arrowHeadHover{
+    /*lines*/
+    -fx-stroke: -myRed;
+    -fx-stroke-width: 3;
+}
+.weight{
+	-fx-stroke: green;
+    -fx-stroke-width: 2;
+}
+.projected{
+     -fx-stroke: -myPink;
+     -fx-stroke-width: 2;
+     -fx-font-size: 15;
+}
+.arrowContent {
+    -fx-text-fill: -myLightest;
+    -fx-background-color: -myDarkest;
+}
+
+/*see also ".dragged" and ".path" under VISNODE*/
+
+/********************************************************************************/
+/***********************************VISNODE*************************************/
+/********************************************************************************/
+
+.visNode{
+    /*text*/
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-padding: 0 4 0 4;
+    -fx-text-fill: -myDarkest;
+     /*background*/
+    -fx-background-color: white;
+    -fx-border-color: -myDarkest;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-border-width: 1;
+}
+.start{
+    /*text*/
+    -fx-text-fill: -myDarkest;
+     /*background*/
+    -fx-background-color: -myGreen;
+    -fx-border-color: null;
+}
+.destination{
+    /*text*/
+    -fx-text-fill: black;
+     /*background*/
+    -fx-background-color: -myYellow;
+    -fx-border-color: black;
+    -fx-border-color: null;
+}
+.visited {
+    /*text*/
+    -fx-text-fill: -myLightest;
+     /*background*/
+    -fx-background-color: -myDarkest;
+}
+.frontier {
+    /*text*/
+    -fx-text-fill: -myMid;
+     /*background*/
+    -fx-background-color: -myBlue;
+    -fx-border-color: null;
+}
+.visNode:currentNode{
+    -fx-border-color: -myOrange;
+    -fx-border-width: 2px;
+}
+.visNode:neighbourNode{
+    -fx-border-color: -myGreen;
+    -fx-border-width: 3px;
+}
+.path{
+    /*text*/
+    -fx-text-fill: -myDarkest;
+     /*background*/
+    -fx-background-color: -myYellow;
+    /*lines*/
+    -fx-stroke: -myYellow;
+    -fx-stroke-width: 2;
+    -fx-border-color: null;
+}
+.dragged{
+    /*text*/
+    -fx-font-weight: bold ;
+    -fx-text-fill: -myDarkest ;
+     /*background*/
+    -fx-background-color: -myRed ;
+    -fx-border-color: null;
+    /*lines*/
+    -fx-stroke: red ;
+    -fx-opacity: .4 ;
+}
+
+/********************************************************************************/
+/***********************************OTHER**************************************/
+/********************************************************************************/
+
+.rubbish_bin{
+    -fx-background-color: -myMid;
+    -fx-min-height: 20;
+    -fx-min-width: 15;
+    -fx-max-height: 20;
+    -fx-max-width: 15;
+    -fx-shape: "M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"
+}
+.mnemonic-underline {
+    -fx-stroke: -fx-text-base-color;
+
+}
